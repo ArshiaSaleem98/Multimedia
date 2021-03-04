@@ -440,44 +440,32 @@ var levels = {
                 { type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
                 { type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
 
-               
-
-                { type: "block", name: "wood", x: 490, y: 380, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 540, y: 317.5, width: 100, height: 25 },
-                { type: "villain", name: "burger", x: 540, y: 405, calories: 590 },
-                { type: "block", name: "wood", x: 590, y: 380, angle: 90, width: 100, height: 25 },
-
+                { type: "block", name: "wood", x: 520, y: 380, angle: 90, width: 100, height: 25 },
+                { type: "block", name: "glass", x: 570, y: 317.5, width: 105, height: 25 },
                 { type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 670, y: 317.5, width: 100, height: 25 },
-                { type: "villain", name: "burger", x: 670, y: 405, calories: 590 },
+                { type: "block", name: "glass", x: 670, y: 317.5, width: 105, height: 25 },
                 { type: "block", name: "wood", x: 720, y: 380, angle: 90, width: 100, height: 25 },
+                { type: "block", name: "glass", x: 770, y: 317.5, width: 105, height: 25 },
+                { type: "block", name: "wood", x: 820, y: 380, angle: 90, width: 100, height: 25 },
+                { type: "block", name: "glass", x: 870, y: 317.5, width: 105, height: 25 },
+                { type: "block", name: "wood", x: 920, y: 380, angle: 90, width: 100, height: 25 },
 
-                { type: "block", name: "wood", x: 750, y: 380, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 800, y: 317.5, width: 100, height: 25 },
-                { type: "villain", name: "burger", x: 800, y: 405, calories: 590 },
-                { type: "block", name: "wood", x: 850, y: 380, angle: 90, width: 100, height: 25 },
+                { type: "block", name: "wood", x: 670, y: 300, angle: 90, width: 100, height: 25 },
+                { type: "block", name: "glass", x: 720, y: 200, width: 400, height: 25 },
+                { type: "block", name: "wood", x: 770, y: 300, angle: 90, width: 100, height: 25 },
 
+                { type: "villain", name: "villain1", x:570, y: 405, calories: 590 },
+                { type: "villain", name: "villain2", x:670, y: 405, calories: 590 },
+                { type: "villain", name: "villain1", x:770, y: 405, calories: 590 },
+                { type: "villain", name: "villain2", x:870, y: 405, calories: 590 },
+                { type: "villain", name: "villain1", x:720, y: 250, calories: 590 },
+                { type: "villain", name: "villain2", x:570, y: 250, calories: 590 },
+                { type: "villain", name: "villain1", x:870, y: 250, calories: 590 },
+                { type: "villain", name: "villain2", x:720, y: 150, calories: 590 },
 
-                {type: "block", name: "glass", x: 550, y: 260, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 650, y: 260, angle: 90, width: 100, height: 25 },
-                { type: "villain", name: "fries", x:520, y: 280, calories: 590 },
-                { type: "block", name: "wood", x: 600, y: 195.5, width: 100, height: 25 },
-
-                {type: "block", name: "glass", x: 690, y: 260, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "wood", x: 740, y: 195.5, width: 100, height: 25 },
-                {type: "block", name: "glass", x: 790, y: 260, angle: 90, width: 100, height: 25 },
-                { type: "villain", name: "villain1", x:810, y: 280, calories: 590 },
-
-
-                {type: "block", name: "wood", x: 620, y: 135, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 670, y: 68, width: 100, height: 25 },
-                {type: "block", name: "wood", x: 720, y: 135, angle: 90, width: 100, height: 25 },
-                { type: "villain", name: "fries", x:670, y: 42, calories: 590 },
-
-
-                { type: "hero", name: "strawberry", x: 30, y: 415 },
-                { type: "hero", name: "orange", x: 80, y: 405 },
-                { type: "hero", name: "apple", x: 140, y: 405 },
+                { type: "hero", name: "hero2", x: 30, y: 415 },
+                { type: "hero", name: "hero1", x: 80, y: 405 },
+                { type: "hero", name: "hero2", x: 140, y: 405 },
             ]
         },
     ],
