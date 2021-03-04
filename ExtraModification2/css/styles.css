@@ -1,0 +1,185 @@
+#gamecontainer {
+	width: 640px;
+	height: 480px;
+	background: url(/images/splashscreen.png);/*changed main screen background image(newly added)*/
+	border: 1px solid block;
+}
+
+
+.gamelayer {
+	width: 640px;
+	height: 480px;
+	position: absolute;
+	display: none;
+}
+ /* Start menu screen */
+#gamestartscreen {
+	padding-top:250px;
+	text-align:center;
+}
+#gamestartscreen img{
+	margin:10px;
+	cursor:pointer;
+}
+
+#playgamebutton{/* play game button styling (newly added)*/
+	width: 120px; 
+	height: 30px; 
+	background: linear-gradient(-60deg, #3387b6 20%,#a3593a 20%); 
+	border-color: #5fcae9;
+	color: white;
+}
+
+#settingbutton{/* setting button styling (newly added)*/
+	width: 120px; 
+	height: 30px; 
+	margin-top:30px;   
+	background: linear-gradient(-60deg, #a3593a 20%,#3387b6 20%);
+	border-color: #5fcae9;
+	color: white;
+}
+
+ /* Level selection screen */
+#levelselectscreen { /* Level selection screen changed styling ,now whenever click play game it will show pop up div with levels(newly added)  */
+	width: 200px;
+	height: 230px;
+	margin-top: 100px;
+	margin-left: 160px;
+	border-style: solid;
+	border-color: #fdd966;
+	border-radius: 80px;
+	background-color: 
+	#45354c;
+	padding-top: 50px;
+	padding-left: 60px;
+	padding-right: 50px;
+}
+
+#levelselectscreen input { /* levels input styling changed( newly added)  */
+	cursor: pointer;
+	margin: 5px;
+	border-radius: 10px;
+	border-color: #3387b6;
+	border-style: solid;
+	background-color: 
+	#a3593a;
+	color: 
+	#fdd966;
+	font-size: 20px;
+	width: 50px;
+	height: 50px;
+}
+
+#levelselectscreen #blocked { /* blocked levels input styling ( newly added)  */
+	cursor: pointer;
+	margin: 5px;
+	border-radius: 10px;
+	background-image: url(/images/icons/lock.png);
+	background-size: 16px;
+	background-repeat: no-repeat;
+	background-position: top left 30px;
+	border-color: 
+	#a3593a;
+	border-style: solid;
+	background-color: 
+	#3387b6;
+	color: 
+	#fdd966;
+	font-size: 20px;
+	width: 50px;
+	height: 50px;
+}
+
+
+
+
+
+
+
+#levelselectscreen span { /* levels select screen font styling( newly added)  */
+	text-decoration: #fdd966;
+	font: 20px Comic Sans MS;
+	margin-left: 50px;
+	margin-right: 50px;
+    color: white;
+
+}
+
+
+ /* Load screen */
+#loadingscreen {
+	background: rgba(100,100,100,0.3);
+}
+#loadingmessage {
+	margin-top:400px;
+	text-align:center;
+	height: 48px;
+	color:white;
+	background:url(/images/loader.gif) no-repeat center;
+	font:12px Arial;
+}
+ /* Scoreboard */
+#scorescreen {
+	height: 60px;
+	font: 32px Comic Sans MS;
+	text-shadow: 0 0 2px #000;
+	color: white;
+}
+#scorescreen img{
+	top: 10px;
+	width: 50px;
+	position: relative;
+	padding-left: 10px;
+	cursor: pointer;
+}
+#scorescreen #score {
+	position: absolute;
+	top: 5px;
+	right: 20px;
+}
+ /* End screen */
+endingscreen {
+	text-align: center;
+}
+#endingscreen div {
+	height: 430px;
+	padding-top: 50px;
+	border: 1px;
+	background: rgba(1,1,1,0.5);
+	text-align: left;
+	padding-left: 100px;
+}
+#endingscreen p {
+	font: 20px Comic Sans MS;
+	text-shadow: 0 0 2px #000;
+	color: white;
+}
+#endingscreen p img {
+	top: 10px;
+	width: 50px;
+	position: relative;
+	cursor: pointer;
+}
+#endingscreen #endingmessage {
+	font: 32px Comic Sans MS;
+	text-shadow: 0 0 2px #000;
+	color: white;
+}
+
+#settings {
+	width: 400px;
+	height: 350px;
+	margin-top: 20px;
+	margin-left: 60px;
+	border-style: solid;
+	border-color: #fdd966;
+	border-radius: 80px;
+	background-color: 
+	#45354c;
+	padding-top: 80px;
+	padding-left: 60px;
+	padding-right: 50px;
+
+
+}
+
