@@ -336,7 +336,7 @@ $(window).load(function () {
 // level
 var levels = {
     data: [
-        {   //first round 
+         {   //first round 
             foreground: 'desert-foreground',
             background: 'clouds-background',
             entities: [
@@ -344,10 +344,11 @@ var levels = {
                 { type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
                 { type: "block", name: "wood", x: 520, y: 380, angle: 90, width: 100, height: 25 },
                 { type: "block", name: "glass", x: 520, y: 280, angle: 90, width: 100, height: 25 },
-                { type: "villain", name: "villain2", x: 520, y: 205, calories: 590 },
+                { type: "villain", name: "villain2", x: 520, y: 180, calories: 590 },
                 { type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
                 { type: "block", name: "glass", x: 620, y: 280, angle: 90, width: 100, height: 25 },
-                { type: "villain", name: "villain1", x: 620, y: 205, calories: 420 },
+                { type: "block", name: "glass", x: 570, y: 190, angle: 90, width: 25, height: 140 },
+                { type: "villain", name: "villain1", x: 620, y: 180, calories: 420 },
                 { type: "hero", name: "hero1", x: 80, y: 405 },
                 { type: "hero", name: "hero2", x: 140, y: 405 },
             ]
