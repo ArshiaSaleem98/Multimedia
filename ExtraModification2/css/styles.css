@@ -4,8 +4,6 @@
 	background: url(/images/splashscreen.png);/*changed main screen background image(newly added)*/
 	border: 1px solid block;
 }
-
-
 .gamelayer {
 	width: 640px;
 	height: 480px;
@@ -91,11 +89,6 @@
 }
 
 
-
-
-
-
-
 #levelselectscreen span { /* levels select screen font styling( newly added)  */
 	text-decoration: #fdd966;
 	font: 20px Comic Sans MS;
@@ -110,6 +103,7 @@
 #loadingscreen {
 	background: rgba(100,100,100,0.3);
 }
+
 #loadingmessage {
 	margin-top:400px;
 	text-align:center;
@@ -118,6 +112,7 @@
 	background:url(/images/loader.gif) no-repeat center;
 	font:12px Arial;
 }
+
  /* Scoreboard */
 #scorescreen {
 	height: 60px;
@@ -166,10 +161,11 @@ endingscreen {
 	color: white;
 }
 
-#settings {
+#settings {/* setting screen styling*/
+	margin-top: 20px;
 	width: 400px;
 	height: 350px;
-	margin-top: 20px;
+	display: none;
 	margin-left: 60px;
 	border-style: solid;
 	border-color: #fdd966;
@@ -179,7 +175,47 @@ endingscreen {
 	padding-top: 80px;
 	padding-left: 60px;
 	padding-right: 50px;
+}
 
+#settings span { /* setting screen font styling( newly added)  */
+	text-decoration: #fdd966;
+	font: 20px Comic Sans MS;
+    color: white;
+	margin-left: 40px;
 
 }
+
+#settings input { /* blocked levels input styling ( newly added)  */
+	cursor: pointer;
+	border-radius: 10px;
+	border-color: #a3593a;
+	border-style: solid;
+	background-color: 
+	#3387b6;
+	color: 
+	#fdd966;
+	font-size: 20px;
+}
+
+
+#settings #blocked { /* blocked levels input styling ( newly added)  */
+	cursor: pointer;
+	margin: 15px;
+	border-radius: 10px;
+	background-image: url(/images/icons/music.png);
+	background-size: 30px;
+	background-repeat: no-repeat;
+	background-position: top 6px left 30px;
+	border-color:
+	#a3593a ;
+	border-style: solid;
+	background-color: 
+	#3387b6;
+	color: 
+	#fdd966;
+	font-size: 20px;
+	width: 100px;
+	height:100px;
+}
+
 

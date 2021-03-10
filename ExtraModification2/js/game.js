@@ -9,6 +9,8 @@ var b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape;
 var b2CircleShape = Box2D.Collision.Shapes.b2CircleShape;
 var b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
 var gamelevels=[];/* this array will contains the level we have finished + 1(newly added)*/
+var musicList=['/audio/optionalMusic1','/audio/optionalMusic2','/audio/optionalMusic3','/audio/optionalMusic4','/audio/optionalMusic5','/audio/optionalMusic6'];
+
 
 (function () {
     var lastTime = 0;
@@ -43,12 +45,12 @@ var game = {
         levels.init();
         loader.init();
         mouse.init();
-        game.backgroundMusic = loader.loadSound('/audio/gurdonark-kindergarten');
-        game.slingshotReleaseSound = loader.loadSound('/audio/released');
-        game.bounceSound = loader.loadSound('/audio/bounce');
+        game.backgroundMusic=loader.loadSound('/audio/music1General')
+        game.slingshotReleaseSound = loader.loadSound('/audio/release');
+        game.bounceSound = loader.loadSound('/audio/boing');
         game.breakSound = {
-            "glass": loader.loadSound('/audio/glassbreak'),
-            "wood": loader.loadSound('/audio/woodbreak')
+            "glass": loader.loadSound('/audio/brokenglass'),
+            "wood": loader.loadSound('/audio/breakingwood')
         };
         $('.gamelayer').hide();
         $('#gamestartscreen').show();
@@ -60,6 +62,35 @@ var game = {
         $('#levelselectscreen').show('slow');
     },
 
+
+    showSettings: function () {/*main screen setting button implementation, to change the background music*/
+        $('.gamelayer').hide();
+        $('#settings').show('slow');
+        var html = "";
+        html += '<span > CHANGE BACKGROUND MUSIC </span> ';
+        for(var i=1;i<musicList.length+1;i++){
+            html += '<input type="button" id="blocked" value="'+i+'" >'
+        }
+        lengths=musicList.length
+        $('#settings').html(html);
+        $('#settings input').click(function () {
+            for(var i=0;i<lengths;i++){
+                if(this.value-1==i){
+                    game.backgroundMusic = loader.loadSound(musicList[i]);
+                    alert("Successfully Changed");
+                    $('#settings').hide();
+                    $('#gamestartscreen').show();
+
+
+
+                }
+            }
+         });
+        
+    },
+
+
+   
     returnLevel: function () {
         /*this method will be called from ending screen , once the level is successfully finised , in this method level function will be called to refresh the data , basically to see which levels are unblocked and which levels are not (newly added)*/
         $('.gamelayer').hide();
@@ -344,11 +375,11 @@ var levels = {
                 { type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
                 { type: "block", name: "wood", x: 520, y: 380, angle: 90, width: 100, height: 25 },
                 { type: "block", name: "glass", x: 520, y: 280, angle: 90, width: 100, height: 25 },
-                { type: "villain", name: "villain2", x: 520, y: 180, calories: 590 },
+                { type: "villain", name: "villain2", x: 520, y: 185, calories: 590 },
                 { type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
                 { type: "block", name: "glass", x: 620, y: 280, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 570, y: 190, angle: 90, width: 25, height: 140 },
-                { type: "villain", name: "villain1", x: 620, y: 180, calories: 420 },
+                { type: "block", name: "glass", x: 570, y:200, width: 135, height: 25 },
+                { type: "villain", name: "villain1", x: 620, y: 185, calories: 420 },
                 { type: "hero", name: "hero1", x: 80, y: 405 },
                 { type: "hero", name: "hero2", x: 140, y: 405 },
             ]
@@ -387,7 +418,43 @@ var levels = {
                 { type: "hero", name: "hero1", x: 140, y: 405 },
             ]
         },
+        
         {//third level
+            foreground: 'desert-foreground',
+            background: 'clouds-background',
+            entities: [
+                { type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
+                { type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
+
+                { type: "block", name: "wood", x: 520, y: 380, angle: 90, width: 100, height: 25 },
+                { type: "block", name: "glass", x: 570, y: 317.5, width: 105, height: 25 },
+                { type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
+                { type: "block", name: "glass", x: 670, y: 317.5, width: 105, height: 25 },
+                { type: "block", name: "wood", x: 720, y: 380, angle: 90, width: 100, height: 25 },
+                { type: "block", name: "glass", x: 770, y: 317.5, width: 105, height: 25 },
+                { type: "block", name: "wood", x: 820, y: 380, angle: 90, width: 100, height: 25 },
+                { type: "block", name: "glass", x: 870, y: 317.5, width: 105, height: 25 },
+                { type: "block", name: "wood", x: 920, y: 380, angle: 90, width: 100, height: 25 },
+
+                { type: "block", name: "wood", x: 670, y: 300, angle: 90, width: 100, height: 25 },
+                { type: "block", name: "glass", x: 720, y: 200, width: 400, height: 25 },
+                { type: "block", name: "wood", x: 770, y: 300, angle: 90, width: 100, height: 25 },
+
+                { type: "villain", name: "villain1", x:570, y: 405, calories: 590 },
+                { type: "villain", name: "villain2", x:670, y: 405, calories: 590 },
+                { type: "villain", name: "villain1", x:770, y: 405, calories: 590 },
+                { type: "villain", name: "villain2", x:870, y: 405, calories: 590 },
+                { type: "villain", name: "villain1", x:720, y: 250, calories: 590 },
+                { type: "villain", name: "villain2", x:570, y: 250, calories: 590 },
+                { type: "villain", name: "villain1", x:870, y: 250, calories: 590 },
+                { type: "villain", name: "villain2", x:720, y: 150, calories: 590 },
+
+                { type: "hero", name: "hero2", x: 30, y: 415 },
+                { type: "hero", name: "hero1", x: 80, y: 405 },
+                { type: "hero", name: "hero2", x: 140, y: 405 },
+            ]
+        },
+        {//forth level
             foreground: 'desert-foreground',
             background: 'clouds-background',
             entities: [
@@ -434,45 +501,11 @@ var levels = {
                 { type: "hero", name: "apple", x: 140, y: 405 },
             ]
         },
-        {//forth level
-            foreground: 'desert-foreground',
-            background: 'clouds-background',
-            entities: [
-                { type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
-                { type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
-
-                { type: "block", name: "wood", x: 520, y: 380, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 570, y: 317.5, width: 105, height: 25 },
-                { type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 670, y: 317.5, width: 105, height: 25 },
-                { type: "block", name: "wood", x: 720, y: 380, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 770, y: 317.5, width: 105, height: 25 },
-                { type: "block", name: "wood", x: 820, y: 380, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 870, y: 317.5, width: 105, height: 25 },
-                { type: "block", name: "wood", x: 920, y: 380, angle: 90, width: 100, height: 25 },
-
-                { type: "block", name: "wood", x: 670, y: 300, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 720, y: 200, width: 400, height: 25 },
-                { type: "block", name: "wood", x: 770, y: 300, angle: 90, width: 100, height: 25 },
-
-                { type: "villain", name: "villain1", x:570, y: 405, calories: 590 },
-                { type: "villain", name: "villain2", x:670, y: 405, calories: 590 },
-                { type: "villain", name: "villain1", x:770, y: 405, calories: 590 },
-                { type: "villain", name: "villain2", x:870, y: 405, calories: 590 },
-                { type: "villain", name: "villain1", x:720, y: 250, calories: 590 },
-                { type: "villain", name: "villain2", x:570, y: 250, calories: 590 },
-                { type: "villain", name: "villain1", x:870, y: 250, calories: 590 },
-                { type: "villain", name: "villain2", x:720, y: 150, calories: 590 },
-
-                { type: "hero", name: "hero2", x: 30, y: 415 },
-                { type: "hero", name: "hero1", x: 80, y: 405 },
-                { type: "hero", name: "hero2", x: 140, y: 405 },
-            ]
-        },
     ],
     init: function () {
         var html = "";
         html += '<span >LEVELS</span> ';/* gave heading level select screen*/ 
+        
         for (var i = 0; i < levels.data.length; i++) {
 
             

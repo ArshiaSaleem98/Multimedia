@@ -22,6 +22,8 @@
         media="screen"
         charset="utf-8"
       />
+      
+
     </head>
     <body>
       <div id="gamecontainer">
@@ -38,31 +40,27 @@
             onclick="game.toggleBackgroundMusic()"
           />
           <img src="images/icons/prev.png" onclick="game.restartLevel();" />
+         
+
           <span id="score" style="color: #5fcae9">Score: 0</span>
+
         </div>
 
         <div id="gamestartscreen" class="gamelayer">
           <!-- before it was clickable image for each "Play Game" and "settings" but now changed into buttons(newly added)   -->
-          <button
-            id="playgamebutton"
-            alt="Play Game"
-            class="btn btn-primary"
-            onclick="game.showLevelScreen();"
+          <button id="playgamebutton"alt="Play Game"class="btn btn-primary"onclick="game.showLevelScreen();"
           >
             PLAY GAME
           </button>
           <div></div>
-          <button
-            id="settingbutton"
-            alt="Play Game"
-            class="btn btn-primary btn-lg active"
-          >
+          <button id="settingbutton" alt="Play Game" onclick="game.showSettings();" class="btn btn-primary btn-lg active" >
             SETTINGS
           </button>
         </div>
         <div id="levelselectscreen" class="gamelayer"></div>
 
-        <div id="settings" class="gamelayer" style="display: none"></div>
+        <div id="settings" class="gamelayer">
+        </div>
         <div id="loadingscreen" class="gamelayer">
           <div id="loadingmessage"></div>
         </div>
