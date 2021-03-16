@@ -8,6 +8,9 @@ var b2World = Box2D.Dynamics.b2World;
 var b2PolygonShape = Box2D.Collision.Shapes.b2PolygonShape;
 var b2CircleShape = Box2D.Collision.Shapes.b2CircleShape;
 var b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
+var gamelevels = [];/* this array will contains the next level we have finished + 1 (newly added)*/
+var musicList = ['/audio/optionalMusic1', '/audio/optionalMusic2', '/audio/optionalMusic3', '/audio/optionalMusic4', '/audio/optionalMusic5', '/audio/optionalMusic6'];/*music list options for user to chnage the background music*/
+
 
 (function () {
     var lastTime = 0;
@@ -37,17 +40,18 @@ var b2DebugDraw = Box2D.Dynamics.b2DebugDraw;
 }());
 //
 var game = {
+
     init: function () {
         // Initialize the object
         levels.init();
         loader.init();
         mouse.init();
-        game.backgroundMusic = loader.loadSound('/audio/gurdonark-kindergarten');
-        game.slingshotReleaseSound = loader.loadSound('/audio/released');
-        game.bounceSound = loader.loadSound('/audio/bounce');
+        game.backgroundMusic = loader.loadSound('/audio/music1General')
+        game.slingshotReleaseSound = loader.loadSound('/audio/release');
+        game.bounceSound = loader.loadSound('/audio/boing');
         game.breakSound = {
-            "glass": loader.loadSound('/audio/glassbreak'),
-            "wood": loader.loadSound('/audio/woodbreak')
+            "glass": loader.loadSound('/audio/brokenglass'),
+            "wood": loader.loadSound('/audio/breakingwood')
         };
         $('.gamelayer').hide();
         $('#gamestartscreen').show();
@@ -58,6 +62,73 @@ var game = {
         $('.gamelayer').hide();
         $('#levelselectscreen').show('slow');
     },
+
+
+    showSettings: function () {/*main screen setting button implementation, to change the background music*/
+        $('.gamelayer').hide();
+        $('#settings').show('slow');
+        $('#settings1').show('slow');
+
+        var html = "";
+        var html1 = "";
+
+        html1 += '<span > Change Background Music </span> ';
+        html1 += '<button id="playSound" class="btn btn-primary"></button> ';
+
+        for (var i = 1; i < musicList.length + 1; i++) {/*it will create as much inputs and button(play , stop and select)  as we have music options...moreover the user for each music will able to listen the music, stop and select in case if he/She likes the music (newly added )*/
+            html += '<input type="button" id="blocked" value="' + i + '" disabled> '
+            html += '<button  value="' + i + '"  id="playSound"><i class="fa fa-play"></i></button>'
+            html += '<button  value="' + i + '"  id="stopSound"><i class="fa fa-stop"></i></button>'
+            html += '<button  value="' + i + '"  id="selectSound"><i class="fa fa-check"></i></button>'
+        }
+        lengths = musicList.length
+        $('#settings1').html(html);
+        $('#settings').html(html1);
+
+        $('#settings1 #playSound').click(function () {/*implementation of playSound button , it will play the clicked music (newly added )*/
+            for (var i = 0; i < lengths; i++) {
+                if (this.value - 1 == i) {
+                    audio = new Audio(musicList[i] + '.ogg');
+                    audio.play();
+                }
+            }
+        });
+        $('#settings1 #stopSound').click(function () {/*implementation of stopSound button , it will stop the corresponding music (newly added )*/
+            audio.pause();
+
+        });
+
+        $('#settings1 #selectSound').click(function () {/*implementation of selectSound button , whenever the user will click on this button, background will be changed  (newly added )*/
+            for (var i = 0; i < lengths; i++) {
+                if (this.value - 1 == i) {
+                    game.backgroundMusic = loader.loadSound(musicList[i]);
+                    alert("Successfully Changed");
+                    $('#settings1').hide();
+                    $('#settings').hide();
+                    $('#gamestartscreen').show();
+
+                }
+            }
+
+        });
+
+        $('#settings button').click(function () {/*implementation of Cancel button , it will close the setting div  (newly added )*/
+            $('#settings1').hide();
+            $('#settings').hide();
+            $('#gamestartscreen').show();
+
+        });
+
+    },
+
+
+    returnLevel: function () {
+        /*this method will be called from ending screen , once the level is successfully finised , in this method level function will be called to refresh the data , basically to see which levels are unblocked and which levels are not (newly added)*/
+        $('.gamelayer').hide();
+        levels.init();
+        $('#levelselectscreen').show('slow');
+    },
+
     startBackgroundMusic: function () {
         var toggleImage = $("#togglemusic")[0];
         game.backgroundMusic.play();
@@ -79,7 +150,7 @@ var game = {
             game.backgroundMusic.pause();
         }
     },
-    mode: "intro", 
+    mode: "intro",
     slingshotX: 140,
     slingshotY: 280,
     start: function () {
@@ -88,7 +159,7 @@ var game = {
         $('#scorescreen').show();
         game.startBackgroundMusic();
         game.mode = "intro";
-        game.offsetLeft = 0; 
+        game.offsetLeft = 0;
         game.ended = false;
         game.animationFrame = window.requestAnimationFrame(game.animate, game.canvas);
     },
@@ -143,20 +214,33 @@ var game = {
     },
 
     showEndingScreen: function () {
+        html = '';
         game.stopBackgroundMusic();
-        if (game.mode == "level-success") {
+        if (game.mode == "level-success") {/*if user will able to complete the level successfully , in the ending screen he/she will able to see total score of corresponding level (newly added )*/
             if (game.currentLevel.number < levels.data.length - 1) {
-                $('#endingmessage').html('Level Complete. Well Done!!!');
+                $('#endingmessage').html('Successfully Level Completed.Congratulations!!!');
                 $('#playnextlevel').show();
+                html += '<span>Score Card</span>';
+                html += '<img src="/images/icons/score.png" >';
+                html += '<p>Your Score:' + game.score + '</p>';
+                $('#scoreCard').html(html);
+                $('#scoreCard').show();
             } else {
-                $('#endingmessage').html('All Levels Complete. Well Done!!!');
+                $('#endingmessage').html('Good Job. All levels Completed !!!');
                 $('#playnextlevel').show();
+                html += '<span>Score Card</span>';
+                html += '<img src="/images/icons/score.png" >';
+                html += '<p>Your Score:' + game.score + '</p>';
+                $('#scoreCard').html(html);
+                $('#scoreCard').show();
             }
         } else if (game.mode == "level-failure") {
-            $('#endingmessage').html('Failed. Play Again?');
+            $('#endingmessage').html('Game Over,Try Again?');
             $('#playnextlevel').show();
+
         }
         $('#endingscreen').show();
+
     },
     handlePanning: function () {
         if (game.mode == "intro") {
@@ -224,15 +308,23 @@ var game = {
                 game.mode = "load-next-hero";
             }
         }
-        if (game.mode == "level-success" || game.mode == "level-failure") {
+        if (game.mode == "level-failure") {
             if (game.panTo(0)) {
                 game.ended = true;
                 game.showEndingScreen();
             }
         }
+        if (game.mode == "level-success") /*only if user has completed the level successfully */ {
+            if (game.panTo(0)) {
+                game.ended = true;
+                gamelevels.push(game.currentLevel['number'] + 1);/*on gamelevel array we will add the currentlevel that we have finished +1 ,it will help us to unblock the next level(newly added)*/
+                game.showEndingScreen();
+            }
+        }
     },
+
     animate: function () {
-        
+
         game.handlePanning();
         var currentTime = new Date().getTime();
         var timeStep;
@@ -242,7 +334,7 @@ var game = {
         }
         game.lastUpdateTime = currentTime;
 
-        
+
         game.context.drawImage(game.currentLevel.backgroundImage,
             game.offsetLeft / 4, 0, 640, 480, 0, 0, 640, 480);
         game.context.drawImage(game.currentLevel.foregroundImage,
@@ -319,51 +411,160 @@ $(window).load(function () {
 // level
 var levels = {
     data: [
+        
         {   //first round 
-            foreground: 'desert-foreground',
-            background: 'clouds-background',
-            entities: [
-                { type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
-                { type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
-                { type: "block", name: "wood", x: 520, y: 380, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 520, y: 280, angle: 90, width: 100, height: 25 },
-                { type: "villain", name: "burger", x: 520, y: 205, calories: 590 },
-                { type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 620, y: 280, angle: 90, width: 100, height: 25 },
-                { type: "villain", name: "fries", x: 620, y: 205, calories: 420 },
-                { type: "hero", name: "orange", x: 80, y: 405 },
-                { type: "hero", name: "apple", x: 140, y: 405 },
-            ]
-        },
-        {//Second level
-            foreground: 'desert-foreground',
-            background: 'clouds-background',
-            entities: [
-                { type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
-                { type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
+           foreground: 'desert-foreground',
+           background: 'clouds-background',
+           entities: [
+               { type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
+               { type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
+               { type: "block", name: "wood", x: 520, y: 380, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 520, y: 280, angle: 90, width: 100, height: 25 },
+               { type: "villain", name: "villain1", x: 520, y: 185, calories: 590 },
+               { type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 620, y: 280, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 570, y:200, width: 135, height: 25 },
+               { type: "villain", name: "villain1", x: 620, y: 185, calories: 420 },
+               { type: "hero", name: "hero1", x: 80, y: 405 },
+               { type: "hero", name: "hero2", x: 140, y: 405 },
+           ]
+       },
+       {//Second level
+           foreground: 'desert-foreground',
+           background: 'clouds-background',
+           entities: [
+               { type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
+               { type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
+                 
+               { type: "block", name: "wood", x: 520, y: 380, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 570, y: 317.5, width: 124, height: 25 },
+               { type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "wood", x: 520, y: 250, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 570, y:200, width: 124, height: 25 },
+               { type: "block", name: "wood", x: 620, y: 250, angle: 90, width: 100, height: 25 },
 
-                { type: "block", name: "wood", x: 820, y: 380, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "wood", x: 720, y: 380, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 670, y: 317.5, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 770, y: 317.5, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 670, y: 255, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "glass", x: 770, y: 255, angle: 90, width: 100, height: 25 },
-                { type: "block", name: "wood", x: 720, y: 192.5, width: 100, height: 25 },
-                { type: "villain", name: "burger", x: 715, y: 155, calories: 590 },
-                { type: "villain", name: "fries", x: 670, y: 405, calories: 420 },
-                { type: "villain", name: "sodacan", x: 765, y: 400, calories: 150 },
-                { type: "hero", name: "strawberry", x: 30, y: 415 },
-                { type: "hero", name: "orange", x: 80, y: 405 },
-                { type: "hero", name: "apple", x: 140, y: 405 },
-            ]
-        }
+               { type: "block", name: "wood", x: 680, y: 380, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 730, y: 317.5, width: 124, height: 25 },
+               { type: "block", name: "wood", x: 780, y: 380, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "wood", x: 680, y: 250, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 730, y:200, width: 124, height: 25 },
+               { type: "block", name: "wood", x: 780, y: 250, angle: 90, width: 100, height: 25 },
+
+               { type: "villain", name: "villain2", x: 570, y: 405, calories: 420 },
+               { type: "villain", name: "villain2", x: 570, y: 280, calories: 420 },
+               { type: "villain", name: "villain2", x: 730, y: 280, calories: 420 },
+               { type: "villain", name: "villain2", x: 730, y: 405, calories: 420 },
+               { type: "villain", name: "villain5", x: 570, y: 155, calories: 420 },
+               { type: "villain", name: "villain6", x: 730, y: 155, calories: 420 },
+
+               { type: "hero", name: "hero3", x: 30, y: 415 },
+               { type: "hero", name: "hero4", x: 80, y: 405 },
+               { type: "hero", name: "hero5", x: 140, y: 405 },
+           ]
+       },
+       
+       {//third level
+           foreground: 'desert-foreground',
+           background: 'clouds-background',
+           entities: [
+               { type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
+               { type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
+
+               { type: "block", name: "wood", x: 520, y: 380, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 570, y: 317.5, width: 105, height: 25 },
+               { type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 670, y: 317.5, width: 105, height: 25 },
+               { type: "block", name: "wood", x: 720, y: 380, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 770, y: 317.5, width: 105, height: 25 },
+               { type: "block", name: "wood", x: 820, y: 380, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 870, y: 317.5, width: 105, height: 25 },
+               { type: "block", name: "wood", x: 920, y: 380, angle: 90, width: 100, height: 25 },
+
+               { type: "block", name: "wood", x: 670, y: 300, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 720, y: 200, width: 400, height: 25 },
+               { type: "block", name: "wood", x: 770, y: 300, angle: 90, width: 100, height: 25 },
+
+               { type: "villain", name: "villain1", x:570, y: 405, calories: 590 },
+               { type: "villain", name: "villain2", x:670, y: 405, calories: 590 },
+               { type: "villain", name: "villain1", x:770, y: 405, calories: 590 },
+               { type: "villain", name: "villain2", x:870, y: 405, calories: 590 },
+               { type: "villain", name: "villain5", x:720, y: 280, calories: 590 },
+               { type: "villain", name: "villain6", x:570, y: 280, calories: 590 },
+               { type: "villain", name: "villain7", x:870, y: 280, calories: 590 },
+               { type: "villain", name: "villain2", x:720, y: 160, calories: 590 },
+
+               { type: "hero", name: "hero6", x: 30, y: 415 },
+               { type: "hero", name: "hero7", x: 80, y: 405 },
+               { type: "hero", name: "hero8", x: 140, y: 405 },
+           ]
+       },
+       
+
+       {//forth level
+           foreground: 'desert-foreground',
+           background: 'clouds-background',
+           entities: [
+               { type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
+               { type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
+
+              
+
+               { type: "block", name: "wood", x: 490, y: 380, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 540, y: 317.5, width: 100, height: 25 },
+               { type: "villain", name: "villain2", x: 540, y: 405, calories: 590 },
+               { type: "block", name: "wood", x: 590, y: 380, angle: 90, width: 100, height: 25 },
+
+               { type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 670, y: 317.5, width: 100, height: 25 },
+               { type: "villain", name: "villain7", x: 670, y: 405, calories: 590 },
+               { type: "block", name: "wood", x: 720, y: 380, angle: 90, width: 100, height: 25 },
+
+               { type: "block", name: "wood", x: 750, y: 380, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 800, y: 317.5, width: 100, height: 25 },
+               { type: "villain", name: "villain3", x: 800, y: 405, calories: 590 },
+               { type: "block", name: "wood", x: 850, y: 380, angle: 90, width: 100, height: 25 },
+
+
+               {type: "block", name: "glass", x: 550, y: 260, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 650, y: 260, angle: 90, width: 100, height: 25 },
+               { type: "villain", name: "villain5", x:520, y: 280, calories: 590 },
+               { type: "block", name: "wood", x: 600, y: 195.5, width: 100, height: 25 },
+
+               {type: "block", name: "glass", x: 690, y: 260, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "wood", x: 740, y: 195.5, width: 100, height: 25 },
+               {type: "block", name: "glass", x: 790, y: 260, angle: 90, width: 100, height: 25 },
+               { type: "villain", name: "villain6", x:810, y: 280, calories: 590 },
+
+
+               {type: "block", name: "wood", x: 620, y: 135, angle: 90, width: 100, height: 25 },
+               { type: "block", name: "glass", x: 670, y: 68, width: 100, height: 25 },
+               {type: "block", name: "wood", x: 720, y: 135, angle: 90, width: 100, height: 25 },
+               { type: "villain", name: "villain8", x:670, y: 42, calories: 590 },
+
+
+               { type: "hero", name: "hero7", x: 30, y: 415 },
+               { type: "hero", name: "hero8", x: 80, y: 405 },
+               { type: "hero", name: "hero9", x: 140, y: 405 },
+           ]
+        },
     ],
     init: function () {
         var html = "";
+        html += '<span >Levels</span> ';/* gave heading level select screen*/
+
         for (var i = 0; i < levels.data.length; i++) {
+
+
             var level = levels.data[i];
-            html += '<input type="button" value="' + (i + 1) + '">';
+            if (i != 0) {/*if i=0 which means its not level 1 then we will check the gamelevels array to see if we have finished the currentlevel to unblock the next level if not then the user cant access the next level, and it will show the unblock image(newly added)*/
+                if (gamelevels.includes(i)) {
+                    html += '<input type="button" value="' + (i + 1) + '">';
+                } else {
+                    html += '<input type="button" id="blocked" value="' + (i + 1) + '" disabled="disabled">'/*it is blocked level, not clickable (newly added)*/
+                }
+            } else {/*else i=0 then it is level one , and it will always be showed as unblocked (newly added)*/
+                html += '<input type="button" value="' + (i + 1) + '">';
+            }
         };
         $('#levelselectscreen').html(html);
         $('#levelselectscreen input').click(function () {
@@ -413,15 +614,7 @@ var entities = {
             friction: 1.5,
             restitution: 0.2,
         },
-        "burger": {
-            shape: "circle",
-            fullHealth: 40,
-            radius: 25,
-            density: 1,
-            friction: 0.5,
-            restitution: 0.4,
-        },
-        "sodacan": {
+        "villain1": {/* new villain added (newly added)*/ 
             shape: "rectangle",
             fullHealth: 80,
             width: 40,
@@ -430,33 +623,129 @@ var entities = {
             friction: 0.5,
             restitution: 0.7,
         },
-        "fries": {
+        "villain2": {/* new villain added (newly added)*/ 
             shape: "rectangle",
-            fullHealth: 50,
+            fullHealth: 80,
             width: 40,
-            height: 50,
+            height: 60,
             density: 1,
             friction: 0.5,
-            restitution: 0.6,
+            restitution: 0.7,
         },
-        "apple": {
+        "villain3": {/* new villain added (newly added)*/ 
+            shape: "rectangle",
+            fullHealth: 80,
+            width: 40,
+            height: 60,
+            density: 1,
+            friction: 0.5,
+            restitution: 0.7,
+        },
+        "villain4": {/* new villain added (newly added)*/ 
+            shape: "rectangle",
+            fullHealth: 80,
+            width: 40,
+            height: 60,
+            density: 1,
+            friction: 0.5,
+            restitution: 0.7,
+        },
+        "villain5": {/* new villain added (newly added)*/ 
+            shape: "rectangle",
+            fullHealth: 80,
+            width: 40,
+            height: 60,
+            density: 1,
+            friction: 0.5,
+            restitution: 0.7,
+        },
+        "villain6": {/* new villain added (newly added)*/ 
+            shape: "rectangle",
+            fullHealth: 80,
+            width: 40,
+            height: 60,
+            density: 1,
+            friction: 0.5,
+            restitution: 0.7,
+        },
+        "villain7": {/* new villain added (newly added)*/ 
+            shape: "rectangle",
+            fullHealth: 80,
+            width: 40,
+            height: 60,
+            density: 1,
+            friction: 0.5,
+            restitution: 0.7,
+        },
+        "villain8": {/* new villain added (newly added)*/ 
+            shape: "rectangle",
+            fullHealth: 80,
+            width: 40,
+            height: 60,
+            density: 1,
+            friction: 0.5,
+            restitution: 0.7,
+        },
+        "hero1": {/*new heroes added (newly added)*/
             shape: "circle",
             radius: 25,
             density: 1.5,
             friction: 0.5,
             restitution: 0.4,
         },
-        "orange": {
+        "hero2": {/*new heroes added (newly added)*/
             shape: "circle",
             radius: 25,
             density: 1.5,
             friction: 0.5,
             restitution: 0.4,
         },
-        "strawberry": {
+        "hero3": {/*new heroes added (newly added)*/
             shape: "circle",
-            radius: 15,
-            density: 2.0,
+            radius: 25,
+            density: 1.5,
+            friction: 0.5,
+            restitution: 0.4,
+        },
+        "hero4": {/*new heroes added (newly added)*/
+            shape: "circle",
+            radius: 25,
+            density: 1.5,
+            friction: 0.5,
+            restitution: 0.4,
+        },
+        "hero5": {/*new heroes added (newly added)*/
+            shape: "circle",
+            radius: 25,
+            density: 1.5,
+            friction: 0.5,
+            restitution: 0.4,
+        },
+        "hero6": {/*new heroes added (newly added)*/
+            shape: "circle",
+            radius: 25,
+            density: 1.5,
+            friction: 0.5,
+            restitution: 0.4,
+        },
+        "hero7": {/*new heroes added (newly added)*/
+            shape: "circle",
+            radius: 25,
+            density: 1.5,
+            friction: 0.5,
+            restitution: 0.4,
+        },
+        "hero8": {/*new heroes added (newly added)*/
+            shape: "circle",
+            radius: 25,
+            density: 1.5,
+            friction: 0.5,
+            restitution: 0.4,
+        },
+        "hero9": {/*new heroes added (newly added)*/
+            shape: "circle",
+            radius: 25,
+            density: 1.5,
             friction: 0.5,
             restitution: 0.4,
         },
@@ -536,8 +825,8 @@ var entities = {
 var box2d = {
     scale: 30,
     init: function () {
-        var gravity = new b2Vec2(0, 9.8); 
-        var allowSleep = true; 
+        var gravity = new b2Vec2(0, 9.8);
+        var allowSleep = true;
         box2d.world = new b2World(gravity, allowSleep);
         var debugContext = document.getElementById('debugcanvas').getContext('2d');
         var debugDraw = new b2DebugDraw();
@@ -554,7 +843,7 @@ var box2d = {
             var entity1 = body1.GetUserData();
             var entity2 = body2.GetUserData();
             var impulseAlongNormal = Math.abs(impulse.normalImpulses[0]);
-           
+
             if (impulseAlongNormal > 5) {
                 if (entity1.health) {
                     entity1.health -= impulseAlongNormal;
@@ -594,7 +883,7 @@ var box2d = {
         fixtureDef.density = definition.density;
         fixtureDef.friction = definition.friction;
         fixtureDef.restitution = definition.restitution;
-        fixtureDef.shape = new b2PolygonShape; 
+        fixtureDef.shape = new b2PolygonShape;
         fixtureDef.shape.SetAsBox(entity.width / 2 / box2d.scale,
             entity.height / 2 / box2d.scale);
 
@@ -630,8 +919,8 @@ var box2d = {
 
 var loader = {
     loaded: true,
-    loadedCount: 0, 
-    totalCount: 0, 
+    loadedCount: 0,
+    totalCount: 0,
 
     init: function () {
         var mp3Support, oggSupport;

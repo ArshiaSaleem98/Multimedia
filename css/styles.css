@@ -1,7 +1,7 @@
 #gamecontainer {
 	width: 640px;
 	height: 480px;
-	background: url(/images/splashscreen.png);
+	background: url(/images/splashscreen.png);/*changed main screen background image(newly added)*/
 	border: 1px solid block;
 }
 .gamelayer {
@@ -10,6 +10,7 @@
 	position: absolute;
 	display: none;
 }
+
  /* Start menu screen */
 #gamestartscreen {
 	padding-top:250px;
@@ -19,26 +20,140 @@
 	margin:10px;
 	cursor:pointer;
 }
- /* Level selection screen */
-#levelselectscreen {
-	padding-top: 150px;
-	padding-left: 50px;
-}
-#levelselectscreen input {
-	margin: 20px;
+
+#playgamebutton {  /*play button styling (newly added)*/
+	box-sizing: border-box;
+	appearance: none;
+	background-color: transparent;
+	border-radius: 0.6em;
 	cursor: pointer;
-	background: url(/images/icons/level.png) no-repeat;
-	color: yellow;
-	font-size: 20px;
-	width: 64px;
-	height: 64px;
-	border: 0;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	margin-top: 50px;
+	padding: 0.8em 1.5em;
+	text-align: center;
+	font: 15px Comic Fantasy;
+    color: #fdd966;
+	font-weight: bold;
+  }
+
+#playgamebutton{/*play button transition newly added */
+	border-radius: 3em;
+	border-color: #fdd966;
+	background-image: -webkit-linear-gradient(left, #3387b6, #3387b6 5%, #a3593a 5%, #a3593a 10%, #3387b6 10%, #3387b6 15%, #a3593a 15%, #a3593a 20%, #3387b6 20%, #3387b6 25%, #a3593a 25%, #a3593a 30%, #3387b6 30%, #3387b6 35%, #a3593a 35%, #a3593a 40%, #3387b6 40%, #3387b6 45%, #a3593a 45%, #a3593a 50%, #3387b6 50%, #3387b6 55%, #a3593a 55%, #a3593a 60%, #3387b6 60%, #3387b6 65%, #a3593a 65%, #a3593a 70%, #3387b6 70%, #3387b6 75%, #a3593a 75%, #a3593a 80%, #3387b6 80%, #3387b6 85%, #a3593a 85%, #a3593a 90%, #3387b6 90%, #3387b6 95%, #a3593a 95%, #a3593a 100%);
+	background-image: linear-gradient(to right, #3387b6, #3387b6 5%, #a3593a 5%, #a3593a 10%, #3387b6 10%, #3387b6 15%, #a3593a 15%, #a3593a 20%, #3387b6 20%, #3387b6 25%, #a3593a 25%, #a3593a 30%, #3387b6 30%, #3387b6 35%, #a3593a 35%, #a3593a 40%, #3387b6 40%, #3387b6 45%, #a3593a 45%, #a3593a 50%, #3387b6 50%, #3387b6 55%, #a3593a 55%, #a3593a 60%, #3387b6 60%, #3387b6 65%, #a3593a 65%, #a3593a 70%, #3387b6 70%, #3387b6 75%, #a3593a 75%, #a3593a 80%, #3387b6 80%, #3387b6 85%, #a3593a 85%, #a3593a 90%, #3387b6 90%, #3387b6 95%, #a3593a 95%, #a3593a 100%);
+	background-position: 0 0;
+	background-size: 100%;
+	-webkit-transition: background 300ms ease-in-out;
+	transition: background 300ms ease-in-out;
 }
+
+#playgamebutton:hover {  /*play button hover newly added */
+	background-position: 100px;
+}
+
+#settingbutton{/* setting button styling (newly added)*/
+	box-sizing: border-box;
+	appearance: none;
+	background-color: transparent;
+	border-radius: 0.6em;
+	cursor: pointer;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	margin-top: 20px;
+	padding: 0.8em 2.0em;
+	text-align: center;
+	font: 15px Comic Fantasy;
+    color: #fdd966;
+	font-weight: bold;
+}
+
+#settingbutton{ /*setting button transition newly added */
+	border-radius: 3em;
+	border-color: #fdd966;
+	background-image: -webkit-linear-gradient(left, #3387b6, #3387b6 5%, #a3593a 5%, #a3593a 10%, #3387b6 10%, #3387b6 15%, #a3593a 15%, #a3593a 20%, #3387b6 20%, #3387b6 25%, #a3593a 25%, #a3593a 30%, #3387b6 30%, #3387b6 35%, #a3593a 35%, #a3593a 40%, #3387b6 40%, #3387b6 45%, #a3593a 45%, #a3593a 50%, #3387b6 50%, #3387b6 55%, #a3593a 55%, #a3593a 60%, #3387b6 60%, #3387b6 65%, #a3593a 65%, #a3593a 70%, #3387b6 70%, #3387b6 75%, #a3593a 75%, #a3593a 80%, #3387b6 80%, #3387b6 85%, #a3593a 85%, #a3593a 90%, #3387b6 90%, #3387b6 95%, #a3593a 95%, #a3593a 100%);
+	background-image: linear-gradient(to right, #3387b6, #3387b6 5%, #a3593a 5%, #a3593a 10%, #3387b6 10%, #3387b6 15%, #a3593a 15%, #a3593a 20%, #3387b6 20%, #3387b6 25%, #a3593a 25%, #a3593a 30%, #3387b6 30%, #3387b6 35%, #a3593a 35%, #a3593a 40%, #3387b6 40%, #3387b6 45%, #a3593a 45%, #a3593a 50%, #3387b6 50%, #3387b6 55%, #a3593a 55%, #a3593a 60%, #3387b6 60%, #3387b6 65%, #a3593a 65%, #a3593a 70%, #3387b6 70%, #3387b6 75%, #a3593a 75%, #a3593a 80%, #3387b6 80%, #3387b6 85%, #a3593a 85%, #a3593a 90%, #3387b6 90%, #3387b6 95%, #a3593a 95%, #a3593a 100%);
+	background-position: 0 0;
+	background-size: 100%;
+	-webkit-transition: background 300ms ease-in-out;
+	transition: background 300ms ease-in-out;
+  }
+  #settingbutton:hover { /*setting button nover newly added */
+	background-position: 100px;
+  }
+
+ /* Level selection screen */
+ 
+#levelselectscreen { /* Level selection screen changed styling ,now by clicking play game button it will show pop up div with levels(newly added)  */
+	width: 200px;
+	height: 230px;
+	margin-top: 100px;
+	margin-left: 160px;
+	border-style: solid;
+	border-color: #fdd966;
+	border-radius: 80px;
+	background-color: 
+	#45354c;
+	padding-top: 50px;
+	padding-left: 60px;
+	padding-right: 50px;
+}
+
+#levelselectscreen input { /* levels input styling changed( newly added)  */
+	cursor: pointer;
+	margin: 5px;
+	border-radius: 10px;
+	border-color: #3387b6;
+	border-style: solid;
+	background-color: 
+	#a3593a;
+	color: 
+	#fdd966;
+	font-size: 20px;
+	width: 50px;
+	height: 50px;
+}
+
+#levelselectscreen #blocked { /* blocked levels input styling ( newly added)  */
+	cursor: pointer;
+	margin: 5px;
+	border-radius: 10px;
+	background-image: url(/images/icons/lock.png);
+	background-size: 16px;
+	background-repeat: no-repeat;
+	background-position: top left 30px;
+	border-color: 
+	#a3593a;
+	border-style: solid;
+	background-color: 
+	#3387b6;
+	color: 
+	#fdd966;
+	font-size: 20px;
+	width: 50px;
+	height: 50px;
+}
+
+
+#levelselectscreen span { /* levels select screen font styling( newly added)  */
+	text-decoration: #fdd966;
+	font: 20px Comic Fantasy;
+	margin-left: 70px;
+	margin-right: 50px;
+    color: 
+	#fdd966;
+
+}
+
+
  /* Load screen */
 #loadingscreen {
 	background: rgba(100,100,100,0.3);
 }
-#loadingmessage {
+
+#loadingmessage { /*loader gif styling ( newly added) */
 	margin-top:400px;
 	text-align:center;
 	height: 48px;
@@ -46,21 +161,22 @@
 	background:url(/images/loader.gif) no-repeat center;
 	font:12px Arial;
 }
+
  /* Scoreboard */
-#scorescreen {
+#scorescreen { /*scorescreen font styling ( newly added) */
 	height: 60px;
-	font: 32px Comic Sans MS;
+	font: 32px Comic Fantasy;
 	text-shadow: 0 0 2px #000;
 	color: white;
 }
-#scorescreen img{
-	opacity: 0.6;
+#scorescreen img{ /*scorescreen font styling ( newly added) */
 	top: 10px;
+	width: 50px;
 	position: relative;
 	padding-left: 10px;
 	cursor: pointer;
 }
-#scorescreen #score {
+#scorescreen #score {/*scorescreen score position setting ( newly added) */
 	position: absolute;
 	top: 5px;
 	right: 20px;
@@ -69,26 +185,244 @@
 endingscreen {
 	text-align: center;
 }
-#endingscreen div {
-	height: 430px;
-	padding-top: 50px;
-	border: 1px;
-	background: rgba(1,1,1,0.5);
-	text-align: left;
-	padding-left: 100px;
+
+
+
+
+#endingscreen div {/*ending screen div styling*/
+	margin-top: 40px;
+	width: 400px;
+	height: 330px;
+	margin-left: 60px;
+	border-style: solid;
+	border-color: #fdd966;
+	border-radius: 80px;
+	background-color: #0e77a3;
+	background-size: 550px 500px;
+	background-position: left;
+	padding-top: 30px;
+	padding-left: 60px;
+	padding-right: 50px;
+	padding-bottom: 40px;
 }
+
 #endingscreen p {
-	font: 20px Comic Sans MS;
+	font: 20px Comic Fantasy;
 	text-shadow: 0 0 2px #000;
 	color: white;
 }
 #endingscreen p img {
 	top: 10px;
+	width: 50px;
 	position: relative;
 	cursor: pointer;
 }
 #endingscreen #endingmessage {
-	font: 32px Comic Sans MS;
+	font: 32px Comic Fantasy;
 	text-shadow: 0 0 2px #000;
-	color: white;
+	color: #fdd966;
 }
+
+/*ending screen scoreCard div styling . it will only show in case user has completed the level successfully newly added */
+#scoreCard{
+	/* setting screen styling*/
+	   margin-top: 190px;
+	   width: 150px;
+	   margin-left: 380px;
+	   overflow: auto;
+	   display: none;
+	   border-radius: 6px;
+	   height: 100px;
+	   margin-top: 210px;
+	   border-style: solid;
+	   border-color: #fdd966;
+	   background-color: 
+	    #a3593a;
+	   background-size: 300px 500px;
+	   margin-bottom: 200px;
+	   padding-top: 10px;
+      
+}
+
+#scoreCard span { /*scoreCard span font styling( newly added)  */
+
+	font: 15px Comic Fantasy;
+    color: #fdd966;
+	margin-left: 30px;
+
+}
+
+#scoreCard p {
+	font: 12px Comic Fantasy;
+	color: #fdd966;
+	margin-left: 30px;	
+}
+
+#scoreCard img {
+	width: 30px;
+	height: 30px;
+    margin-left: auto;	
+    cursor: pointer;
+}
+
+
+#settings {/* setting screen styling (newly added)*/
+	margin-top: 40px;
+	width: 400px;
+	height: 300px;
+	display: none;
+	margin-left: 60px;
+	border-style: solid;
+	border-color: #fdd966;
+	border-radius: 80px;
+	background: url(/images/musicBack.jpg) no-repeat;
+	background-color: 
+	#3387b6;
+	background-size: 550px 500px;
+	background-position: left;
+	padding-top: 30px;
+	padding-left: 60px;
+	padding-right: 50px;
+	padding-bottom: 40px;
+}
+
+#settings  button{/* setting screen cancel button styling (newly added)*/
+	background: url('/images/icons/cancel.png') no-repeat;
+	width: 30px;
+	height: 30px;
+	margin-left: 65px;
+	border-radius:50% ;
+	border-color: #3387b6;
+	border-style: solid;
+
+}
+
+ 
+
+#settings span { /* setting screen font styling( newly added)  */
+	text-decoration: #fdd966;
+	font: 20px Comic Fantasy;
+    color: #fdd966;
+	margin-left: 80px;
+
+}
+
+#settings1{  /* setting screen inner div music list div styling( newly added)  */
+	   margin-top: 120px;
+	   width: 250px;
+	   margin-left: 280px;
+	   overflow: auto;
+	   scrollbar-color: yellow #800080;
+	   scrollbar-width: 10px;
+		   display: none;
+	   border-radius: 6px;
+	   height: 310px;
+	   border-style: solid;
+	   border-color: #fdd966;
+	   background-color: 
+	   #0e77a3;
+	   background-size: 300px 500px;
+	   margin-bottom: 200px;
+	   padding-top: 10px;
+   
+	   
+   }
+   
+
+#settings1 #blocked { /*setting screen inner div input styling( newly added)*/
+	cursor: context-menu;
+	margin-top: 30px;
+	margin-left: 20px;
+	margin-bottom: 15px;
+	display:inline-block;
+	margin-right:10px;
+	border-radius: 6px;
+	background-image: url(/images/icons/music.png);
+	background-size: 18px;
+	background-repeat: no-repeat;
+	background-position: top 6px left 10px;
+	text-align: right;
+	border-color:
+	#fdd966 ;
+	border-style: solid;
+	background-color: 
+	#45354c;
+	color: 
+	#fdd966;
+	font: 20px Comic Fantasy;
+	width: 70px;
+	height:50px;
+}
+
+#settings1 #playSound{/* setting screen inner div play sound button styling( newly added)*/
+	width: 30px;
+	height: 30px;
+	display:inline-block;
+	margin-left: 5px;
+	border-radius:50% ;
+	border-color: #fdd966;
+	background-color: #a3593a;
+	border-style: solid;
+
+}
+#settings1  i{/* setting screen inner div styling*/
+	color: #45354c;
+
+}
+
+
+
+#settings1  #stopSound{/* setting screen inner div stop sound button styling( newly added)*/
+	width: 30px;
+	height: 30px;
+	display:inline-block;
+	margin-left: 10px;
+	border-radius:50% ;
+	border-color: #fdd966;
+	background-color: darkcyan;
+	border-style: solid;
+
+}
+
+#settings1  #selectSound{ /* setting screen inner div music select button styling( newly added)*/
+	width: 30px;
+	height: 30px;
+	display:inline-block;
+	margin-left: 10px;
+	border-radius:50% ;
+	border-color: #fdd966;
+	background-color: limegreen;
+	border-style: solid;
+
+}
+
+/* setting screen inner div scroll down styling( newly added)*/
+.flexcroll{
+    scrollbar-face-color: #367CD2;
+    scrollbar-shadow-color: #FFFFFF;
+    scrollbar-highlight-color: #FFFFFF;
+    scrollbar-3dlight-color: #FFFFFF;
+    scrollbar-darkshadow-color: #FFFFFF;
+    scrollbar-track-color: #FFFFFF;
+    scrollbar-arrow-color: #FFFFFF;
+}
+
+
+.flexcroll::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+.flexcroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+.flexcroll::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #45354c; 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+
