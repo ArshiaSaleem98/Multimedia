@@ -236,7 +236,9 @@ var game = {
             }
         } else if (game.mode == "level-failure") {
             $('#endingmessage').html('Game Over,Try Again?');
+            document.getElementById('playnextlevel').style.display = "none";
 
+            
         }
         $('#endingscreen').show();
 
@@ -997,4 +999,5 @@ var mouse = {
         mouse.dragging = false;
     }
 }
+
 
