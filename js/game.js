@@ -236,7 +236,6 @@ var game = {
             }
         } else if (game.mode == "level-failure") {
             $('#endingmessage').html('Game Over,Try Again?');
-            $('#playnextlevel').show();
 
         }
         $('#endingscreen').show();
