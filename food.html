@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>ITPAKSPAIN</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js"></script>
+
+    <body>
+        <!-- Navbar -->
+        <div class="w3-top">
+            <div class="w3-bar w3-black w3-card">
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="w3_open()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a href="index.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+                <a href="food.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">FOOD</a>
+                <a href="place.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PLACES</a>
+                <a href="fashion.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">FASHION</a>
+                <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+        <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+        <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top: 46px;">
+            <a href="food.html" class="w3-bar-item w3-button w3-padding-large">FOOD</a>
+            <a href="place.html" class="w3-bar-item w3-button w3-padding-large">PLACES</a>
+            <a href="fashion.html" class="w3-bar-item w3-button w3-padding-large">FASHION</a>
+        </div>
+        <!-- Sidebar -->
+        <nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar1">
+            <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+                <i class="fa fa-remove"></i>
+            </a>
+            <img src="img/FoodIcon.png" alt="Food" class="center" />
+            <a class="w3-bar-item w3-button w3-hover-black" onclick="onClickItalianCuisine();">
+                Italian Cuisine
+            </a>
+            <a class="w3-bar-item w3-button w3-hover-black" onclick="onClickPakistaniCuisine();">Pakistani Cuisine</a>
+            <a class="w3-bar-item w3-button w3-hover-black" onclick="onClickSpanishCuisine();">Spanish Cuisine</a>
+        </nav>
+        <!-- Overlay effect when opening sidebar on small screens -->
+        <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor: pointer;" title="close side menu" id="myOverlay1"></div>
+        <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+        <div class="w3-main" style="margin-left: 250px;">
+            <div class="w3-container">
+                <div class="w3-section w3-bottombar w3-padding-16">
+                    <br />
+                    <h1><b>ITPAKSPAIN Food</b></h1>
+                    <br />
+                    <span class="w3-margin-right">Filter:</span>
+                    <button class="w3-button w3-black" onclick="AllCuisine();">
+                        ALL
+                    </button>
+                </div>
+            </div>
+            <!-- Italian food starts here-->
+            <div class="w3-row-padding">
+                <div class="w3-third w3-container w3-margin-bottom Italian">
+                    <img src="https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/article/55365cd73787b2187a1f0790/portada.jpg" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Italian</b></p>
+                        <p>
+                            hola tum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Italian">
+                    <img src="https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/article/55365cd73787b2187a1f0790/portada.jpg" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Italian</b></p>
+                        <p>
+                            my tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container Italian">
+                    <img src="https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/article/55365cd73787b2187a1f0790/portada.jpg" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Italian</b></p>
+                        <p>
+                            hi tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!--Pakistani Food Start Here-->
+            <div class="w3-row-padding">
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakFood1.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Biryani</b></p>
+                        <p class="w3-opacity"><i>Category:Main Course</i></p>
+                        <p>
+                            Biryani has mild fragrance, sticky rice, distinct taste of rice with hot and tangy flavour along with soft meat or vegetables.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakFood2.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Seekh Kabab</b></p>
+                        <p class="w3-opacity"><i>Category:Main Course</i></p>
+
+                        <p>
+                            Seekh kebab is made with spiced minced or ground meat, usually lamb, beef, or chicken, formed into cylinders on skewers.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakFood3.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Chicken Tikka</b></p>
+                        <p class="w3-opacity"><i>Category:Main Course</i></p>
+
+                        <p>
+                            Chicken tikka is cubed chicken that is marinated in spiced yogurt mixture & then grilled to perfection.Served with naan or rice.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakFood4.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Halwa Puri</b></p>
+                        <p class="w3-opacity"><i>Category:Main Course</i></p>
+
+                        <p>
+                            Halwa poori is a traditional Pakistani breakfast that features semolina pudding or halwa and fried puri.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakFood5.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Chicken Karahi</b></p>
+                        <p class="w3-opacity"><i>Category:Main Course</i></p>
+
+                        <p>
+                            Chicken Karahi or Chicken Kadai is a spicy, homestyle chicken curry with fragrant spices and fresh ginger.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakFood6.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Kheer</b></p>
+                        <p class="w3-opacity"><i>Category:Dessert</i></p>
+
+                        <p>
+                            Kheer is a chilled dessert made from slow-cooked rice, milk, and sugar, much like a rice pudding.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakFood7.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Kheer</b></p>
+                        <p class="w3-opacity"><i>Category:Dessert</i></p>
+
+                        <p>
+                            Kheer is a chilled dessert made from slow-cooked rice, milk, and sugar, much like a rice pudding.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakFood8.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Gajar Halwa</b></p>
+                        <p class="w3-opacity"><i>Category:Dessert</i></p>
+
+                        <p>
+                            Consisting of carrots or semolina boiled with milk, almonds, sugar, butter, and cardamom.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakFood9.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Sheer khurma</b></p>
+                        <p class="w3-opacity"><i>Category:Dessert</i></p>
+
+                        <p>
+                            Sheer means milk in Persian and khurma means dates,it is a delectable and nutritious mix of sewai, dates and milk.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakFood10.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Rasmalai</b></p>
+                        <p class="w3-opacity"><i>Category:Dessert</i></p>
+
+                        <p>
+                            Rasmalai is basically a creamy and milky syrup that consist of (cottage cheese) balls.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakFood11.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Shikanji</b></p>
+                        <p class="w3-opacity"><i>Category:Beverage</i></p>
+
+                        <p>
+                            Shikanji contains ingredients such as lemon ,salt, saffron and cumin.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakFood12.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Chai</b></p>
+                        <p class="w3-opacity"><i>Category:Beverage</i></p>
+
+                        <p>
+                            Chai means a mix of spices steeped into a tea-like beverage.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakFood13.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Falsa Juice</b></p>
+                        <p class="w3-opacity"><i>Category:Beverage</i></p>
+
+                        <p>
+                            Its a Fruit juice , looks like a doppelganger of the American blueberry.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakFood14.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Lassi</b></p>
+                        <p class="w3-opacity"><i>Category:Beverage</i></p>
+
+                        <p>
+                            Lassis come in all kinds of flavors, some are salty, some are sweet, some have mint, some have fruit.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container Pakistani">
+                    <img src="img/pakFood15.png" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Ganna Juice</b></p>
+                        <p class="w3-opacity"><i>Category:Beverage</i></p>
+
+                        <p>
+                            Sugarcane juice, commonly known as Ganne ka Ras is one of the healthiest drinks.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--Pakistani Food Ends Here-->
+
+            <!-- Spanish food starts here-->
+            <div class="w3-row-padding">
+                <div class="w3-third w3-container w3-margin-bottom Spanish">
+                    <img src="https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/article/55365cd73787b2187a1f0790/portada.jpg" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Spanish</b></p>
+                        <p>
+                            Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Spanish">
+                    <img src="https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/article/55365cd73787b2187a1f0790/portada.jpg" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Spanish</b></p>
+                        <p>
+                            Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container Spanish">
+                    <img src="https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/article/55365cd73787b2187a1f0790/portada.jpg" alt="Food" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Spanish</b></p>
+                        <p>
+                            hi tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Pagination -->
+            <div class="w3-center w3-padding-32">
+                <div class="w3-bar">
+                    <a class="w3-button w3-black" href="#">1</a>
+                    <a class="w3-button w3-hover-black" href="#">2</a>
+                    <a class="w3-button w3-hover-black" href="#">3</a>
+                    <a class="w3-button w3-hover-black" href="#">4</a>
+                    <a class="w3-button w3-hover-black" href="#">5</a>
+                    <a class="w3-button w3-hover-black" href="#">»</a>
+                </div>
+            </div>
+            <!-- Footer -->
+            <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+                <i class="fa fa-facebook-official w3-hover-opacity"></i>
+                <i class="fa fa-instagram w3-hover-opacity"></i>
+                <i class="fa fa-snapchat w3-hover-opacity"></i>
+                <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+                <i class="fa fa-twitter w3-hover-opacity"></i>
+                <i class="fa fa-linkedin w3-hover-opacity"></i>
+                <p class="w3-medium">
+                    Powered by
+                    <a href="#" target="_blank">ITPAKSPAIN</a>
+                </p>
+            </footer>
+            <!-- END MAIN -->
+        </div>
+        <script>
+            // Get the Sidebar
+            var mySidebar = document.getElementById("mySidebar1")
+
+            // Get the DIV with overlay effect
+            var overlayBg = document.getElementById("myOverlay1")
+            function w3_close(){
+                mySidebar.style.display = "none";
+                overlayBg.style.display = "none"}
+
+            function w3_open(){
+                mySidebar.style.display = "block";
+                overlayBg.style.display = "block" }
+        </script>
+    </body>
+</html>

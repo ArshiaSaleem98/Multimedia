@@ -1,0 +1,40 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato", sans-serif;
+}
+
+.w3-sidebar {
+    z-index: 3;
+    width: 250px;
+    top: 43px;
+    bottom: 0;
+    height: inherit;
+    border: 3px solid black;
+}
+
+#mySidebar {
+    border: 3px solid black;
+}
+#mySidebar1 {
+    border: 3px solid black;
+}
+#mySidebar3 {
+    border: 3px solid black;
+}
+
+.mySlides {
+    display: none;
+}
+.center {
+    margin-top: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding-bottom: 50px;
+}

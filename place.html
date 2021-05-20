@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>ITPAKSPAIN</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js"></script>
+
+    <body>
+        <!-- Navbar -->
+        <div class="w3-top">
+            <div class="w3-bar w3-black w3-card">
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="w3_open()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a href="index.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+                <a href="food.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">FOOD</a>
+                <a href="place.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PLACES</a>
+                <a href="fashion.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">FASHION</a>
+
+                <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+            </div>
+        </div>
+
+        <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+        <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top: 46px;">
+            <a href="food.html" class="w3-bar-item w3-button w3-padding-large">FOOD</a>
+            <a href="place.html" class="w3-bar-item w3-button w3-padding-large">PLACES</a>
+            <a href="fashion.html" class="w3-bar-item w3-button w3-padding-large">FASHION</a>
+        </div>
+
+        <!-- Sidebar -->
+        <nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+            <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+                <i class="fa fa-remove"></i>
+            </a>
+            <img src="img/PlaceIcon.png" alt="Place" class="center" />
+
+            <a class="w3-bar-item w3-button w3-hover-black" onclick="onClickItalianPlaces();">
+                Places Related to Italian Culture
+            </a>
+            <a class="w3-bar-item w3-button w3-hover-black" onclick="onClickPakistaniPlaces();">Places Related to Pakistani Culture </a>
+            <a class="w3-bar-item w3-button w3-hover-black" onclick="onClickSpanishPlaces();">Places Related to Spanish Culture </a>
+        </nav>
+
+        <!-- Overlay effect when opening sidebar on small screens -->
+        <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor: pointer;" title="close side menu" id="myOverlay"></div>
+
+        <!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+        <div class="w3-main" style="margin-left: 250px;">
+            <div class="w3-container">
+                <div class="w3-section w3-bottombar w3-padding-16">
+                    <br />
+                    <h1><b>ITPAKSPAIN Places to visit</b></h1>
+                    <br />
+
+                    <span class="w3-margin-right">Filter:</span>
+                    <button class="w3-button w3-black" onclick="AllPlaces();">ALL</button>
+                </div>
+            </div>
+
+            <!-- First Photo Grid-->
+            <div class="w3-row-padding">
+                <div class="w3-third w3-container w3-margin-bottom Italian">
+                    <img src="https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/nature.jpg" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Italian</b></p>
+                        <p>
+                            hola tum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Italian">
+                    <img src="https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/nature.jpg" alt="Norway" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Italian</b></p>
+                        <p>
+                            my tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container Italian">
+                    <img src="https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/nature.jpg" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Italian</b></p>
+                        <p>
+                            hi tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pakistani places Start here-->
+            <div class="w3-row-padding">
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakPlace1.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Badshahi Masjid</b></p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakPlace2.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Lahore Fort</b></p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakPlace3.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Sheesh Mahal</b></p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakPlace4.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Shalimar Gardens</b></p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakPlace5.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Mohenjo-Daro</b></p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakPlace6.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Lake Saiful Muluk</b></p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakPlace7.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Faisal Mosque </b></p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakPlace8.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Tomb,Mazar-e-Quaid</b></p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakPlace9.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Rohtas Fort</b></p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakPlace10.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Margalla Hills</b></p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakPlace11.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Frere Halls</b></p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakPlace12.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Lulusar Lake</b></p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakPlace13.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Shakarparian</b></p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Pakistani">
+                    <img src="img/pakPlace14.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Minar-e-Pakistan</b></p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container Pakistani">
+                    <img src="img/pakPlace15.png" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Tomb of Shah Rukn-e-Alam</b></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Pakistani Places End Here-->
+
+            <!-- Third Photo Grid-->
+            <div class="w3-row-padding">
+                <div class="w3-third w3-container w3-margin-bottom Spanish">
+                    <img src="https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/nature.jpg" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Spanish</b></p>
+                        <p>
+                            Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container w3-margin-bottom Spanish">
+                    <img src="https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/nature.jpg" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Spanish</b></p>
+                        <p>
+                            Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+                        </p>
+                    </div>
+                </div>
+                <div class="w3-third w3-container Spanish">
+                    <img src="https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/nature.jpg" alt="Place" style="width: 100%;" class="w3-hover-opacity" />
+                    <div class="w3-container w3-white">
+                        <p><b>Spanish</b></p>
+                        <p>
+                            hi tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="w3-center w3-padding-32">
+                <div class="w3-bar">
+                    <a class="w3-button w3-black" href="#">1</a>
+                    <a class="w3-button w3-hover-black" href="#">2</a>
+                    <a class="w3-button w3-hover-black" href="#">3</a>
+                    <a class="w3-button w3-hover-black" href="#">4</a>
+                    <a class="w3-button w3-hover-black" href="#">5</a>
+                    <a class="w3-button w3-hover-black" href="#">»</a>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+                <i class="fa fa-facebook-official w3-hover-opacity"></i>
+                <i class="fa fa-instagram w3-hover-opacity"></i>
+                <i class="fa fa-snapchat w3-hover-opacity"></i>
+                <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+                <i class="fa fa-twitter w3-hover-opacity"></i>
+                <i class="fa fa-linkedin w3-hover-opacity"></i>
+                <p class="w3-medium">
+                    Powered by
+                    <a href="#" target="_blank">ITPAKSPAIN</a>
+                </p>
+            </footer>
+
+            <!-- END MAIN -->
+        </div>
+
+        <script>
+            // Get the Sidebar
+            var mySidebar = document.getElementById("mySidebar");
+
+            // Get the DIV with overlay effect
+            var overlayBg = document.getElementById("myOverlay");
+
+            // Toggle between showing and hiding the sidebar, and add overlay effect
+            function removeOtherPlaces(className, displayState) {
+                var elements = document.getElementsByClassName(className);
+
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].style.display = displayState;
+                }
+            }
+
+            // Close the sidebar with the close button
+            function w3_close() {
+                mySidebar.style.display = "none";
+                overlayBg.style.display = "none";
+            }
+            function w3_open() {
+                mySidebar.style.display = "block";
+                overlayBg.style.display = "block";
+            }
+        </script>
+    </body>
+</html>
